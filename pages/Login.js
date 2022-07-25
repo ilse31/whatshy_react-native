@@ -1,6 +1,5 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { useFonts } from "expo-font";
 import { IBanner } from "../assets/ilustration";
 import Button from "../components/Button";
 import Line from "../components/Line";

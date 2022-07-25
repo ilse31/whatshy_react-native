@@ -10,9 +10,8 @@ export default function App() {
     Poppins_400Regular: require("./assets/fonts/Poppins-Regular.otf"),
     Poppins_500Medium: require("./assets/fonts/Poppins-Medium.otf"),
     Poppins_600SemiBold: require("./assets/fonts/Poppins-SemiBold.otf"),
-    // Poppins_700Bold: require("./assets/fonts/Poppins-Bold.otf"),
-    // Poppins_800ExtraBold: require("./assets/fonts/Poppins/Poppins-ExtraBold.ttf"),
-    // Poppins_900Black: require("../assets/fonts/Poppins/Poppins-Black.ttf"),
+    Poppins_700Bold: require("./assets/fonts/Poppins-Bold.otf"),
+    Poppins_800ExtraBold: require("./assets/fonts/Poppins-ExtraBold.otf"),
   });
   if (!fontsLoaded) {
     return null;

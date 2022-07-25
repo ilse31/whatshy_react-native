@@ -1,7 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import { useFonts } from "expo-font";
-
 const Button = ({ title, type }) => {
   return (
     <TouchableOpacity style={styles.container(type)}>
