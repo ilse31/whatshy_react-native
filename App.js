@@ -1,7 +1,7 @@
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import Login from "./pages/Login";
+import StackRoute from "./routers";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -16,12 +16,7 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return (
-    <View style={styles.container}>
-      <Login />
-      <StatusBar style='auto' />
-    </View>
-  );
+  return <StackRoute />;
 }
 
 const styles = StyleSheet.create({
