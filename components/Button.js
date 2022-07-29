@@ -12,7 +12,6 @@ export default Button;
 
 const styles = StyleSheet.create({
   container: (type) => ({
-    width: 300,
     backgroundColor: type === "Google" ? "#C4C4C4" : "#407BFF",
     paddingVertical: 10,
     borderRadius: 16,
