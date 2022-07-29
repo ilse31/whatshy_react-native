@@ -37,15 +37,14 @@ const Login = () => {
         <Button title={"Facebook"} />
         <View
           style={{
-            flex: 1,
             justifyContent: "flex-end",
             alignItems: "center",
+            marginTop: 20,
           }}>
           <Text
             style={{
               color: "#00D7B9",
               textDecorationLine: "underline",
-              bottom: 0,
               fontFamily: "Poppins_300Light",
             }}>
             Another Way to login ?
@@ -62,6 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
+    padding: 40,
   },
   TitleBold: {
     fontFamily: "Poppins_600SemiBold",
