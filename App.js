@@ -5,6 +5,7 @@ import StackRoute from "./routers";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
+    Poppins_100ExtraLight: require("./assets/fonts/Poppins-ExtraLight.otf"),
     Poppins_200Thin: require("./assets/fonts/Poppins-Thin.otf"),
     Poppins_300Light: require("./assets/fonts/Poppins-Light.otf"),
     Poppins_400Regular: require("./assets/fonts/Poppins-Regular.otf"),
