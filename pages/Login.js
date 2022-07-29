@@ -3,8 +3,9 @@ import React from "react";
 import { IBanner } from "../assets/ilustration";
 import Button from "../components/Button";
 import Line from "../components/Line";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={IBanner} />
@@ -35,7 +36,8 @@ const Login = () => {
           <Line />
         </View>
         <Button title={"Facebook"} />
-        <View
+        <TouchableOpacity
+          onPresss={() => navigation.navigate("Home")}
           style={{
             justifyContent: "flex-end",
             alignItems: "center",
@@ -49,7 +51,7 @@ const Login = () => {
             }}>
             Another Way to login ?
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -59,9 +61,10 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignContent: "center",
     backgroundColor: "white",
     alignItems: "center",
-    padding: 40,
+    padding: 35,
   },
   TitleBold: {
     fontFamily: "Poppins_600SemiBold",
