@@ -6,6 +6,11 @@ import Line from "../components/Line";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Login = ({ navigation }) => {
+  const onClicka = () => {
+    navigation.navigate("Home");
+    console.log("Click");
+  };
+
   return (
     <View style={styles.container}>
       <Image source={IBanner} />
@@ -21,7 +26,11 @@ const Login = ({ navigation }) => {
           flexDirection: "column",
           marginVertical: 20,
         }}>
-        <Button title={"Google"} type='Google' />
+        <Button
+          title={"Google"}
+          type='Google'
+          press={() => console.log("login")}
+        />
         <View
           style={{
             height: 20,
@@ -35,9 +44,9 @@ const Login = ({ navigation }) => {
           <Text style={{ paddingHorizontal: 10, color: "#00D7B9" }}>Atau</Text>
           <Line />
         </View>
-        <Button title={"Facebook"} />
+        <Button title={"Facebook"} press={() => console.log("login")} />
         <TouchableOpacity
-          onPresss={() => navigation.navigate("Home")}
+          onPressIn={() => navigation.navigate("Home")}
           style={{
             justifyContent: "flex-end",
             alignItems: "center",
@@ -58,6 +67,7 @@ const Login = ({ navigation }) => {
 };
 
 export default Login;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
