@@ -12,7 +12,6 @@ import HistoryIcon from "../assets/icons/historyIcon.png";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
 const MainApp = () => {
   return (
     <Tab.Navigator
