@@ -16,6 +16,8 @@ const Home = () => {
       </View>
       <View style={{ alignItems: "center" }}>
         <Image source={IBanner} />
+      </View>
+      <View style={{ alignItems: "flex-start" }}>
         <Text style={styles.Titlehome}>Mudah dengan Chat dan Broadcast</Text>
         <Text style={styles.subtitlehome}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
@@ -37,7 +39,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    padding: 35,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   TitlePage: {
     fontFamily: "Poppins_100ExtraLight",
@@ -50,12 +53,11 @@ const styles = StyleSheet.create({
   Titlehome: {
     fontFamily: "Poppins_600SemiBold",
     fontSize: 28,
-    marginVertical: 6,
   },
   subtitlehome: {
     fontFamily: "Poppins_300Light",
     fontSize: 14,
-    textAlign: "justify",
+    textAlign: "left",
     marginBottom: 10,
   },
   buttons: {
