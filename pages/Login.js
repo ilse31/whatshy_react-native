@@ -7,7 +7,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Login = ({ navigation }) => {
   const onClicka = () => {
-    navigation.navigate("Home");
+    navigation.navigate("MainApp");
     console.log("Click");
   };
 
@@ -46,7 +46,7 @@ const Login = ({ navigation }) => {
         </View>
         <Button title={"Facebook"} press={() => console.log("login")} />
         <TouchableOpacity
-          onPressIn={() => navigation.navigate("Home")}
+          onPressIn={() => navigation.navigate("MainApp")}
           style={{
             justifyContent: "flex-end",
             alignItems: "center",
