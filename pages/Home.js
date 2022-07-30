@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { IconApp } from "../assets/icons";
 import { IBanner } from "../assets/ilustration";
+import FAB from "../components/FAB";
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
       <TouchableOpacity style={styles.buttons}>
         <Text style={styles.text}>Get Started</Text>
       </TouchableOpacity>
+      <FAB />
     </View>
   );
 };
