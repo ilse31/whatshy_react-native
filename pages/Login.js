@@ -40,9 +40,9 @@ const Login = ({ navigation }) => {
             marginVertical: 5,
             position: "relative",
           }}>
-          <Line />
+          <Line width={"25%"} />
           <Text style={{ paddingHorizontal: 10, color: "#00D7B9" }}>Atau</Text>
-          <Line />
+          <Line width={"25%"} />
         </View>
         <Button title={"Facebook"} press={() => console.log("login")} />
         <TouchableOpacity
