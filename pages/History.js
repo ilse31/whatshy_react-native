@@ -1,9 +1,32 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  ScrollView,
+  FlatList,
+  ActivityIndicator,
+  LogBox,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import Line from "../components/Line";
 import CardHistory from "../components/CardHistory";
-import { StatusBar } from "expo-status-bar";
+import axios from "axios";
+import TwoLine from "../components/TwoLine";
+
 const History = () => {
+  const [data, setData] = useState([]);
+  const getData = async () => {
+    await axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        setData(res.data);
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -13,29 +36,15 @@ const History = () => {
         </View>
         {/* Header ends here */}
         {/* SUbHeader */}
-        <View
-          style={{
-            height: 20,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginVertical: 5,
-            position: "relative",
-          }}>
-          <Line width={"30%"} />
-          <Text style={{ color: "#00D7B9" }}>{new Date().getFullYear()}</Text>
-          <Line width={"30%"} />
-        </View>
-        {/* Card Content */}
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
+        <TwoLine title={new Date().getFullYear()} width={"30%"} />
       </ScrollView>
+      <FlatList
+        style={{ marginTop: 10 }}
+        data={data}
+        renderItem={({ item }) => (
+          <CardHistory users={item.name} data={item.email} />
+        )}
+      />
     </SafeAreaView>
   );
 };
@@ -48,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   headers: {
-    marginTop: 20,
+    marginTop: 30,
     paddingLeft: 20,
     justifyContent: "center",
   },
