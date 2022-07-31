@@ -1,10 +1,20 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import {
+  Animated,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  LogBox,
+} from "react-native";
+import React, { useEffect } from "react";
 import { IconApp } from "../assets/icons";
 import { IBanner } from "../assets/ilustration";
-import FAB from "../components/FAB";
+import ActionButton from "react-native-action-button-warnings-fixed";
+import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View
@@ -28,7 +38,20 @@ const Home = () => {
       <TouchableOpacity style={styles.buttons}>
         <Text style={styles.text}>Get Started</Text>
       </TouchableOpacity>
-      <FAB />
+      <ActionButton buttonColor='#00B89F'>
+        <ActionButton.Item
+          buttonColor='#157347'
+          title='Personal Messages'
+          onPress={() => navigation.navigate("PersonalMessage")}>
+          <MaterialIcons name='chat' size={24} color='white' />
+        </ActionButton.Item>
+        <ActionButton.Item
+          buttonColor='#157347'
+          title='Broadcast'
+          onPress={() => navigation.navigate("Broadcast")}>
+          <MaterialCommunityIcons name='broadcast' size={24} color='white' />
+        </ActionButton.Item>
+      </ActionButton>
     </View>
   );
 };
