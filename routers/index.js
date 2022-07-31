@@ -9,6 +9,8 @@ import { Image } from "react-native";
 import HomeIcon from "../assets/icons/HomeIcon.png";
 import ProfileIcon from "../assets/icons/profileIcon.png";
 import HistoryIcon from "../assets/icons/historyIcon.png";
+import PersonalMessages from "../pages/PersonalMessages";
+import Broadcast from "../pages/Broadcast";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -68,6 +70,8 @@ const StackRoute = () => {
           component={MainApp}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name='PersonalMessage' component={PersonalMessages} />
+        <Stack.Screen name='Broadcast' component={Broadcast} />
       </Stack.Navigator>
     </NavigationContainer>
   );
