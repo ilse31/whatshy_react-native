@@ -5,6 +5,7 @@ import React from "react";
 import Profiles from "../assets/ilustration/Profile.png";
 import Line from "../components/Line";
 import Button from "../components/Button";
+import TwoLine from "../components/TwoLine";
 const Account = () => {
   return (
     <View style={styles.container}>
@@ -77,27 +78,7 @@ const Account = () => {
             Parturient faucibus enim lorem pretium dui cursus. Elementum
             commodo, libero etiam at aliquet nisl.
           </Text>
-
-          <View
-            style={{
-              height: 20,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              marginVertical: 5,
-              position: "relative",
-            }}>
-            <Line width={"28%"} />
-            <Text
-              style={{
-                paddingHorizontal: 10,
-                color: "#00D7B9",
-                fontFamily: "Poppins_600SemiBold",
-              }}>
-              Linked to
-            </Text>
-            <Line width={"28%"} />
-          </View>
+          <TwoLine width={"28%"} title={"Linked to"} />
           <Button type={"Facebook"} title={"Facebook"} />
         </View>
       </View>
@@ -118,7 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   HeaderTop: {
-    marginTop: 3,
+    marginTop: 10,
     padding: 20,
     flexDirection: "row",
     justifyContent: "space-between",
