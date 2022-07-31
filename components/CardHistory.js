@@ -1,18 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const CardHistory = () => {
+const CardHistory = ({ users, data }) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <View style={styles.headerCard}>
-          <Text>0893434343242</Text>
+          <Text>{users}</Text>
           <Text>01/01/21</Text>
         </View>
-        <Text style={styles.cardbody}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam nulla
-          sit massa nunc
-        </Text>
+        <Text style={styles.cardbody}>{data}</Text>
       </View>
     </View>
   );
