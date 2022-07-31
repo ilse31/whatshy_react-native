@@ -4,6 +4,7 @@ import { IBanner } from "../assets/ilustration";
 import Button from "../components/Button";
 import Line from "../components/Line";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import TwoLine from "../components/TwoLine";
 
 const Login = ({ navigation }) => {
   return (
@@ -26,19 +27,7 @@ const Login = ({ navigation }) => {
           type='Google'
           press={() => console.log("login")}
         />
-        <View
-          style={{
-            height: 20,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginVertical: 5,
-            position: "relative",
-          }}>
-          <Line width={"25%"} />
-          <Text style={{ paddingHorizontal: 10, color: "#00D7B9" }}>Atau</Text>
-          <Line width={"25%"} />
-        </View>
+        <TwoLine title={"Atau"} width={"25%"} />
         <Button title={"Facebook"} press={() => console.log("login")} />
         <TouchableOpacity
           onPressIn={() => navigation.navigate("MainApp")}
