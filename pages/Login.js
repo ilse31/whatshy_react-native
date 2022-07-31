@@ -6,11 +6,6 @@ import Line from "../components/Line";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Login = ({ navigation }) => {
-  const onClicka = () => {
-    navigation.navigate("MainApp");
-    console.log("Click");
-  };
-
   return (
     <View style={styles.container}>
       <Image source={IBanner} />
