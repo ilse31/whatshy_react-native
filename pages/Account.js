@@ -3,7 +3,6 @@ import circleIL from "../assets/ilustration/circleIL.png";
 import IconLogOut from "../assets/icons/logOutIcon.png";
 import React from "react";
 import Profiles from "../assets/ilustration/Profile.png";
-import Line from "../components/Line";
 import Button from "../components/Button";
 import TwoLine from "../components/TwoLine";
 const Account = () => {
@@ -36,7 +35,6 @@ const Account = () => {
           <View
             style={{
               backgroundColor: "rgba(0, 215, 185, 0.4)",
-              marginTop: 10,
               borderRadius: 16,
               width: "100%",
             }}>
@@ -61,7 +59,7 @@ const Account = () => {
           </View>
           {/* EMailFORM END*/}
         </View>
-        <View style={{ marginVertical: 10 }}>
+        <View style={{ marginVertical: 5 }}>
           <Text
             style={{
               fontFamily: "Poppins_600SemiBold",
