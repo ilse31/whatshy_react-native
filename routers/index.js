@@ -11,6 +11,7 @@ import ProfileIcon from "../assets/icons/profileIcon.png";
 import HistoryIcon from "../assets/icons/historyIcon.png";
 import PersonalMessages from "../pages/PersonalMessages";
 import Broadcast from "../pages/Broadcast";
+import PhoneBook from "../pages/PhoneBook";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -70,8 +71,31 @@ const StackRoute = () => {
           component={MainApp}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name='PersonalMessage' component={PersonalMessages} />
+        <Stack.Screen
+          name='PersonalMessage'
+          component={PersonalMessages}
+          options={{
+            headerTitleAlign: "center",
+            title: "Personal Message",
+            headerTitleStyle: {
+              fontFamily: "Poppins_600SemiBold",
+              fontSize: 24,
+            },
+          }}
+        />
         <Stack.Screen name='Broadcast' component={Broadcast} />
+        <Stack.Screen
+          name='phonebook'
+          component={PhoneBook}
+          options={{
+            headerTitleAlign: "center",
+            title: "Phonebook",
+            headerTitleStyle: {
+              fontFamily: "Poppins_600SemiBold",
+              fontSize: 24,
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
