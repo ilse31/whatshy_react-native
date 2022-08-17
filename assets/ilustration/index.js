@@ -1,3 +1,4 @@
 import IBanner from "./banner.png";
-
-export { IBanner };
+import IphoneBook from "./phonebook.png";
+import IprofileContact from "./profileContact.png";
+export { IBanner, IphoneBook, IprofileContact };
