@@ -1,6 +1,4 @@
 import { useFonts } from "expo-font";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
 import StackRoute from "./routers";
 
 export default function App() {
@@ -19,12 +17,3 @@ export default function App() {
   }
   return <StackRoute />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    alignItems: "center",
-    padding: 35,
-  },
-});
