@@ -5,8 +5,6 @@ import {
   SafeAreaView,
   ScrollView,
   FlatList,
-  ActivityIndicator,
-  LogBox,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
@@ -49,9 +47,7 @@ const History = () => {
     </SafeAreaView>
   );
 };
-
 export default History;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
