@@ -9,7 +9,7 @@ import {
   LogBox,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import Line from "../components/Line";
+import { StatusBar } from "expo-status-bar";
 import CardHistory from "../components/CardHistory";
 import axios from "axios";
 import TwoLine from "../components/TwoLine";
@@ -31,6 +31,7 @@ const History = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         {/* Header */}
+        <StatusBar style='auto' />
         <View style={styles.headers}>
           <Text style={styles.titles}>History</Text>
         </View>
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   headers: {
-    marginTop: 30,
+    marginTop: 40,
     paddingLeft: 20,
     justifyContent: "center",
   },

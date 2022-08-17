@@ -5,6 +5,7 @@ import React from "react";
 import Profiles from "../assets/ilustration/Profile.png";
 import Button from "../components/Button";
 import TwoLine from "../components/TwoLine";
+import { StatusBar } from "expo-status-bar";
 const Account = () => {
   return (
     <View style={styles.container}>
@@ -30,6 +31,7 @@ const Account = () => {
             }}>
             <Image source={Profiles} />
           </View>
+          <StatusBar style='auto' />
           <Text style={styles.titleName}>Ilham Prasetya</Text>
           {/* EMailFORM */}
           <View
@@ -59,7 +61,10 @@ const Account = () => {
           </View>
           {/* EMailFORM END*/}
         </View>
-        <View style={{ marginVertical: 5 }}>
+        <View
+          style={{
+            marginVertical: 20,
+          }}>
           <Text
             style={{
               fontFamily: "Poppins_600SemiBold",
@@ -77,7 +82,7 @@ const Account = () => {
             commodo, libero etiam at aliquet nisl.
           </Text>
           <TwoLine width={"28%"} title={"Linked to"} />
-          <Button type={"Facebook"} title={"Facebook"} />
+          <Button type={"#407BFF"} title={"Facebook"} />
         </View>
       </View>
     </View>
@@ -97,7 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   HeaderTop: {
-    marginTop: 10,
+    marginTop: 20,
     padding: 20,
     flexDirection: "row",
     justifyContent: "space-between",

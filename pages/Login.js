@@ -5,7 +5,7 @@ import Button from "../components/Button";
 import Line from "../components/Line";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import TwoLine from "../components/TwoLine";
-
+import { StatusBar } from "expo-status-bar";
 const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -24,11 +24,15 @@ const Login = ({ navigation }) => {
         }}>
         <Button
           title={"Google"}
-          type='Google'
+          type='#C4C4C4'
           press={() => console.log("login")}
         />
         <TwoLine title={"Atau"} width={"25%"} />
-        <Button title={"Facebook"} press={() => console.log("login")} />
+        <Button
+          type={"#407BFF"}
+          title={"Facebook"}
+          press={() => console.log("login")}
+        />
         <TouchableOpacity
           onPressIn={() => navigation.navigate("MainApp")}
           style={{
@@ -36,6 +40,7 @@ const Login = ({ navigation }) => {
             alignItems: "center",
             marginTop: 20,
           }}>
+          <StatusBar style='auto' />
           <Text
             style={{
               color: "#00D7B9",
@@ -58,6 +63,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     backgroundColor: "white",
     alignItems: "center",
+    top: 20,
     padding: 35,
   },
   TitleBold: {

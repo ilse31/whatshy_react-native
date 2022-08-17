@@ -7,7 +7,8 @@ import {
   View,
   LogBox,
 } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
+import { StatusBar } from "expo-status-bar";
 import { IconApp } from "../assets/icons";
 import { IBanner } from "../assets/ilustration";
 import ActionButton from "react-native-action-button-warnings-fixed";
@@ -24,6 +25,7 @@ const Home = ({ navigation }) => {
         <Image source={IconApp} />
         <Text style={styles.TitlePage}>Whatshy</Text>
       </View>
+      <StatusBar style='auto' />
       <View style={{ alignItems: "center" }}>
         <Image source={IBanner} />
       </View>
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     paddingHorizontal: 20,
+    marginTop: 20,
     paddingVertical: 20,
   },
   TitlePage: {
