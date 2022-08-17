@@ -83,7 +83,18 @@ const StackRoute = () => {
             },
           }}
         />
-        <Stack.Screen name='Broadcast' component={Broadcast} />
+        <Stack.Screen
+          name='Broadcast'
+          component={Broadcast}
+          options={{
+            headerTitleAlign: "center",
+            title: "Broadcast",
+            headerTitleStyle: {
+              fontFamily: "Poppins_600SemiBold",
+              fontSize: 24,
+            },
+          }}
+        />
         <Stack.Screen
           name='phonebook'
           component={PhoneBook}
