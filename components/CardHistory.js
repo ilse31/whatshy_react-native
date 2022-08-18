@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const CardHistory = ({ users, data }) => {
+const CardHistory = ({ users, data, dates }) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <View style={styles.headerCard}>
           <Text>{users}</Text>
-          <Text>01/01/21</Text>
+          <Text>{dates}</Text>
         </View>
         <Text style={styles.cardbody}>{data}</Text>
       </View>

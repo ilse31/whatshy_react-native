@@ -9,22 +9,28 @@ import {
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import CardHistory from "../components/CardHistory";
-import axios from "axios";
 import TwoLine from "../components/TwoLine";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const History = () => {
-  const [data, setData] = useState([]);
-  const getData = async () => {
-    await axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => {
-        setData(res.data);
-      });
-  };
+  const [form, setform] = useState([]);
 
+  const getDataHistory = async () => {
+    try {
+      const phone = await AsyncStorage.getItem("history");
+      if (phone.length > 0) {
+        console.log(phone);
+        setform(JSON.parse(phone));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    getData();
+    getDataHistory();
   }, []);
+
+  console.log(form);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -38,10 +44,17 @@ const History = () => {
         <TwoLine title={new Date().getFullYear()} width={"30%"} />
       </ScrollView>
       <FlatList
-        style={{ marginTop: 10 }}
-        data={data}
+        data={form}
         renderItem={({ item }) => (
-          <CardHistory users={item.name} data={item.email} />
+          <CardHistory
+            users={`+${item.number}`}
+            data={item.text}
+            dates={`${new Date(item.createdAt).toDateString()} - ${new Date(
+              item.createdAt
+            )
+              .toTimeString()
+              .substring(0, 5)}`}
+          />
         )}
       />
     </SafeAreaView>
