@@ -1,4 +1,5 @@
 import {
+  FlatList,
   Image,
   StyleSheet,
   Text,
@@ -6,65 +7,77 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { IprofileContact } from "../assets/ilustration";
 import ActionButton from "react-native-action-button-warnings-fixed";
+import Button from "../components/Button";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
+import axios from "axios";
+import CardPhoneBook from "../components/CardPhoneBook";
+import { API } from "../helpers/API";
 const PhoneBook = () => {
-  const [dropDown, setDropDown] = useState(true);
+  let form = {
+    name: "",
+    number: "",
+  };
+  const [contact, setContact] = useState([]);
+  const [formDatas, setformDatas] = useState(form);
   const bottomSheetRef = useRef(BottomSheetModal);
   const snapPoints = useMemo(() => ["20%", "90%"], []);
   const handlePresentModalPress = useCallback(() => {
     bottomSheetRef.current?.present();
   }, []);
+
+  const handleChange = (e, name) => {
+    setformDatas({
+      ...formDatas,
+      [name]: e,
+    });
+  };
+
+  const handleSubmit = () => {
+    console.log(formDatas);
+  };
+
+  const getContact = async () => {
+    await API.get("/all")
+      .then((res) => {
+        console.log(res.data);
+        setContact(res.data.phonebook);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getContact();
+  }, []);
+
+  console.log(contact);
   return (
     <BottomSheetModalProvider>
       <View style={styles.container}>
         <View style={styles.containercard}>
-          <View style={styles.card}>
-            <View style={{ flexDirection: "row", padding: 5 }}>
-              <Image
-                source={IprofileContact}
-                style={{ height: 50, width: 50 }}
+          <FlatList
+            data={contact}
+            renderItem={({ item }) => (
+              <CardPhoneBook
+                nomer={item.number}
+                id={item.id}
+                names={item.name}
               />
-              <View style={styles.headerCard}>
-                <Text style={{ fontFamily: "Poppins_700Bold", fontSize: 14 }}>
-                  Gemilang
-                </Text>
-                <Text>081234567890</Text>
-              </View>
-            </View>
-            <View>
-              <View style={styles.dropdown}>
-                <TouchableOpacity
-                  style={styles.dropdownText}
-                  onPressIn={() => setDropDown(!dropDown)}>
-                  <Text>. . . . .</Text>
-                </TouchableOpacity>
-                <View
-                  style={{
-                    flexDirection: "column",
-                    backgroundColor: "white",
-                    borderRadius: 5,
-                    borderWidth: 1,
-                    borderColor: "#00D7B9",
-                    padding: 10,
-                    marginTop: 10,
-                    display: dropDown ? "none" : "flex",
-                  }}>
-                  <TouchableOpacity>
-                    <Text style={styles.dropdownContentText}>Edit</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Text style={styles.dropdownContentText}>Hapus</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </View>
+            )}
+          />
         </View>
         <ActionButton
           buttonColor='#00B89F'
@@ -121,8 +134,10 @@ const PhoneBook = () => {
               </Text>
               <TextInput
                 style={styles.input}
-                keyboardType='phone-pad'
-                placeholder='Type your message here'
+                keyboardType='default'
+                placeholder='Masukan Nama'
+                key={"name"}
+                onChangeText={(e) => handleChange(e, "name")}
               />
               <Text
                 style={{
@@ -134,9 +149,12 @@ const PhoneBook = () => {
               <TextInput
                 style={styles.input}
                 keyboardType='phone-pad'
-                placeholder='Type your message here'
+                placeholder='Masukan Nomor Telpon'
+                key={"number"}
+                onChangeText={(e) => handleChange(e, "number")}
               />
             </View>
+            <Button type={"#407BFF"} title={"Tambahkan"} press={handleSubmit} />
           </View>
         </BottomSheetModal>
       </View>
@@ -152,25 +170,8 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "white",
   },
-  dropdownContentText: {
-    fontFamily: "Poppins_300Light",
-    fontSize: 14,
-    color: "black",
-    padding: 5,
-  },
-  dropdownText: {
-    fontFamily: "Poppins_300Light",
-    fontSize: 14,
-  },
-  dropdown: {
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 5,
-  },
-  headerCard: {
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    marginLeft: 20,
+  containercard: {
+    backgroundColor: "white",
   },
   input: {
     borderWidth: 1,
@@ -179,28 +180,5 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     marginTop: 10,
-  },
-  card: {
-    margin: 5,
-    height: 75,
-    justifyContent: "space-between",
-    flexDirection: "row",
-    marginTop: 10,
-    borderWidth: 1,
-    backgroundColor: "#fff",
-    width: "100%",
-    borderColor: "#fff",
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    borderRadius: 6,
-    elevation: 5,
-    marginBottom: 10,
-  },
-  cardbody: {
-    paddingVertical: 10,
-  },
-  containercard: {
-    flex: 1,
-    backgroundColor: "white",
   },
 });

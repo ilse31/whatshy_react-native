@@ -2,11 +2,45 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { IBanner } from "../assets/ilustration";
 import Button from "../components/Button";
-import Line from "../components/Line";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import TwoLine from "../components/TwoLine";
 import { StatusBar } from "expo-status-bar";
+import * as Google from "expo-auth-session/providers/google";
+import * as WebBrowser from "expo-web-browser";
+
 const Login = ({ navigation }) => {
+  const [accessToken, setAccessToken] = React.useState();
+  const [userInfo, setUserInfo] = React.useState();
+  const [message, setMessage] = React.useState();
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    androidClientId:
+      "180360695-rf4ntjo851lci31lr8204tcsnqg69tcd.apps.googleusercontent.com",
+    expoClientId:
+      "180360695-2kf98eqblpfqbt36tmuv6ukb2g1gqe49.apps.googleusercontent.com",
+  });
+
+  React.useEffect(() => {
+    setMessage(JSON.stringify(response));
+    if (response?.type === "success") {
+      setAccessToken(response.authentication.accessToken);
+    }
+  }, [response]);
+
+  // async function getUserData() {
+  //   let userInfoResponse = await fetch(
+  //     "https://www.googleapis.com/userinfo/v2/me",
+  //     {
+  //       headers: { Authorization: `Bearer ${accessToken}` },
+  //     }
+  //   );
+  //   userInfoResponse.json().then((data) => {
+  //     setUserInfo(data);
+  //   });
+  // }
+
+  // getUserData();
+  // console.log(userInfo);
+
   return (
     <View style={styles.container}>
       <Image source={IBanner} />
@@ -22,11 +56,7 @@ const Login = ({ navigation }) => {
           flexDirection: "column",
           marginVertical: 20,
         }}>
-        <Button
-          title={"Google"}
-          type='#C4C4C4'
-          press={() => console.log("login")}
-        />
+        <Button title={"Google"} type='#C4C4C4' press={() => promptAsync()} />
         <TwoLine title={"Atau"} width={"25%"} />
         <Button
           type={"#407BFF"}

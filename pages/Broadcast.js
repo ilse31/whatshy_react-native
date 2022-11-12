@@ -1,15 +1,40 @@
 import {
+  Linking,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import Button from "../components/Button";
 
 const Broadcast = () => {
+  const [messages, setMessages] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (key, value) => {
+    setMessages({
+      ...messages,
+      [key]: value,
+    });
+  };
+
+  const sendMessage = async () => {
+    setLoading(true);
+    setError("");
+    setTimeout(() => {
+      Linking.openURL(
+        `https://api.whatsapp.com/send?text=${messages}&source=&data=`,
+        "_blank"
+      );
+      setMessages("");
+      setLoading(false);
+    }, 1000);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style='auto' />
@@ -43,7 +68,11 @@ const Broadcast = () => {
         />
       </View>
       <TouchableOpacity style={{ marginTop: 20 }}>
-        <Button title={"KIRIM"} type='#00D7B9' />
+        <Button
+          title={loading ? "SENDING . . ." : "Kirim"}
+          type='#00D7B9'
+          press={sendMessage}
+        />
       </TouchableOpacity>
     </View>
   );

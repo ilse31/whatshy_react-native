@@ -57,7 +57,6 @@ const PersonalMessages = ({ navigation }) => {
 
   useEffect(() => {
     getDataHistory();
-    // removeValue();
   }, []);
 
   const onPressSend = async () => {
@@ -92,10 +91,6 @@ const PersonalMessages = ({ navigation }) => {
       console.log(e);
     }
     setTimeout(() => {
-      // Link(
-      //   `https://api.whatsapp.com/send?phone=${dataForm.phone}&text=${msg}&source=&data=`,
-      //   "_blank"
-      // );
       Linking.openURL(`whatsapp://send?phone=${dataForm.phone}&text=${msg}`);
       setLoading(false);
       setDataForm(formDatas);
